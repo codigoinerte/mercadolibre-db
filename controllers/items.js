@@ -10,7 +10,6 @@ const getItems = async (req = request, res = response) => {
     const { q = ''} = req.query;
 
     let { status, respuesta = {}, error = '' } = (id !='') ? await busqueda.detalleItem(id) : await busqueda.buscarItems(q);
-
     
     if(status == 200)
     {

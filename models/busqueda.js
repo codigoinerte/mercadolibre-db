@@ -12,11 +12,11 @@ class Busquedas
         try {
 
             const response = await fetch(`${this.url}sites/MLA/search?q=${query}`);            
-            const respuesta = await response.json();
-
+            const respuesta = await response.json();            
             
             return {
                 status: response.status,
+                error: respuesta.hasOwnProperty('error')?respuesta.error:'',
                 respuesta
             };
 
@@ -40,10 +40,11 @@ class Busquedas
             const [response1, response2] = await Promise.all([consulta1, consulta2]);
                        
             const respuesta1 = await response1.json();
-            const respuesta2 = await response2.json();
+            const respuesta2 = await response2.json();            
 
             return {
                 status: response1.status,
+                error: respuesta1.hasOwnProperty('error')?respuesta1.error:'',
                 respuesta : {
                     ...respuesta1,
                     ...respuesta2
