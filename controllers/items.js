@@ -7,9 +7,9 @@ const getItems = async (req = request, res = response) => {
 
 
     const { id = '' } = req.params;
-    const { q = ''} = req.query;
+    const { q = '', pagina = 1} = req.query;
 
-    let { status, respuesta = {}, error = '' } = (id !='') ? await busqueda.detalleItem(id) : await busqueda.buscarItems(q);
+    let { status, respuesta = {}, error = '' } = (id !='') ? await busqueda.detalleItem(id) : await busqueda.buscarItems(q, pagina);
     
     if(status == 200)
     {

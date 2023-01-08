@@ -7,11 +7,11 @@ class Busquedas
         this.url = 'https://api.mercadolibre.com/';
     }
 
-    async buscarItems(query)
+    async buscarItems(query, pagina = 1)
     {
         try {
 
-            const response = await fetch(`${this.url}sites/MLA/search?q=${query}`);            
+            const response = await fetch(`${this.url}sites/MLA/search?q=${query}&offset=${pagina*50}`);            
             const respuesta = await response.json();            
             
             return {
